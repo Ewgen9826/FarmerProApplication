@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="FarmerProApplication.Pages.Admin.AdminHomePage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FarmerProApplication.Pages.Admin"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="#fff"
+             DataContext="{Binding Source={StaticResource Locator}, Path=AdminViewModel}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Height="180" Width="180" HorizontalAlignment="Center">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <materialDesign:PackIcon Margin="0 0 0 15" Height="60" Width="60" Foreground="#fff" Kind="Calculator" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Расчет рациона" Foreground="#fff" FontSize="16" Style="{StaticResource MaterialDesignHeadline6TextBlock }"/>
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding NavigateToFeedBasePageCommand}" Margin="100 0" Height="180" Width="180" HorizontalAlignment="Center">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <materialDesign:PackIcon Margin="0 0 0 15" Height="60" Width="60" Foreground="#fff" Kind="Home" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Кормовая база" Foreground="#fff" FontSize="16" Style="{StaticResource MaterialDesignHeadline6TextBlock }"/>
+                </StackPanel>
+            </Button>
+
+            <Button Height="180" Width="180" HorizontalAlignment="Center" Command="{Binding NavigateToUsersPageCommand}">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <materialDesign:PackIcon Margin="0 0 0 15" Height="60" Width="60" Foreground="#fff" Kind="Users" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Пользователи" Foreground="#fff" FontSize="16" Style="{StaticResource MaterialDesignHeadline6TextBlock }"/>
+                </StackPanel>
+            </Button>
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Command="{Binding NavigateToNormsPageCommand}" Height="180" Width="180" HorizontalAlignment="Center">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <materialDesign:PackIcon Margin="0 0 0 15" Height="60" Width="60" Foreground="#fff" Kind="FileChart" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Нормы" Foreground="#fff" FontSize="16" Style="{StaticResource MaterialDesignHeadline6TextBlock }"/>
+                </StackPanel>
+            </Button>
+
+            <Button Command="{Binding NavigateToCowsPageCommand}" Margin="100 0 0 0" Height="180" Width="180" HorizontalAlignment="Center">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <materialDesign:PackIcon Margin="0 0 0 15" Height="60" Width="60" Foreground="#fff" Kind="Cow" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Коровы" Foreground="#fff" FontSize="16" Style="{StaticResource MaterialDesignHeadline6TextBlock }"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <Button Command="{Binding LogoutCommand}" Grid.Row="2" FontSize="18" Height="40" Width="150" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignFlatButton}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Выход" />
+                <materialDesign:PackIcon Kind="Logout" Height="20" Width="20" VerticalAlignment="Center" Margin="20 0 0 0"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>
