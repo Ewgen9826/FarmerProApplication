@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="FarmerProApplication.Pages.Admin.UserDetailPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FarmerProApplication.Pages.Admin"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" Background="#fff"
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding Source={StaticResource Locator}, Path=UserDetailViewModel}"
+             >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="10">
+            <TextBlock Style="{StaticResource MaterialDesignTextBlock}" Foreground="{StaticResource PrimaryHueDarkBrush}" FontWeight="Bold" FontSize="26" Text="Добавление пользователя" HorizontalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Margin="20 " Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center">
+            <Grid HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Foreground="#616161" HorizontalAlignment="Right" Text="Имя:" FontSize="20" FontWeight="Bold" Style="{StaticResource MaterialDesignTextBlock}"/>
+                <TextBox Text="{Binding FirstName}" Grid.Column="1" Width="300" HorizontalAlignment="Left"  materialDesign:HintAssist.Hint="Введите имя" FontSize="20" Margin="20 0"/>
+                <TextBlock Grid.Column="2" Foreground="#616161" HorizontalAlignment="Right" Text="Фамилия:" FontSize="20" FontWeight="Bold" Style="{StaticResource MaterialDesignTextBlock}"/>
+                <TextBox Text="{Binding LastName}" Grid.Column="3" Width="300" HorizontalAlignment="Left"  materialDesign:HintAssist.Hint="Введите фамилию" FontSize="20" Margin="20 0"/>
+            </Grid>
+
+            <Grid HorizontalAlignment="Stretch" Margin="0 40 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" Foreground="#616161" Text="Логин:" FontSize="20" FontWeight="Bold" Style="{StaticResource MaterialDesignTextBlock}"/>
+                <TextBox Text="{Binding Login}" Grid.Column="1" Width="300" HorizontalAlignment="Left"  materialDesign:HintAssist.Hint="Введите логин пользователя" FontSize="20" Margin="20 0"/>
+            </Grid>
+
+            <Grid HorizontalAlignment="Stretch" Margin="0 40 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" Foreground="#616161" Text="Пароль:" FontSize="20" FontWeight="Bold" Style="{StaticResource MaterialDesignTextBlock}"/>
+                <TextBox Text="{Binding Password}" Grid.Column="1" Width="300" HorizontalAlignment="Left"  materialDesign:HintAssist.Hint="Введите пароль пользователя" FontSize="20" Margin="20 0"/>
+            </Grid>
+
+            <Grid HorizontalAlignment="Stretch" Margin="0 40 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" Foreground="#616161" Text="Роль:" FontSize="20" FontWeight="Bold" Style="{StaticResource MaterialDesignTextBlock}"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Center">
+                    <RadioButton IsChecked="{Binding IsUser}" FontWeight="Bold" Margin="0 0 30 0" VerticalAlignment="Center" Style="{StaticResource MaterialDesignRadioButton}" Content="Пользователь"/>
+                    <RadioButton IsChecked="{Binding IsAdmin}" FontWeight="Bold" VerticalAlignment="Center" Style="{StaticResource MaterialDesignRadioButton}" Content="Администратор"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 20">
+            <Button Command="{Binding CancelCommand}" Style="{StaticResource MaterialDesignFlatButton}" Margin="0 0 100 0" Content="Отмена"/>
+            <Button Command="{Binding AddCommand}" Foreground="#fff" Content="Добавить"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

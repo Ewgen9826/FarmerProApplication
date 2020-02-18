@@ -67,7 +67,12 @@
             </Grid>
         </materialDesign:ColorZone>
         <!--End Header-->
-
-        <Grid x:Name="main" Grid.Row="1"/>
+        <materialDesign:DialogHost Grid.Row="1" Identifier="RootDialog">
+            <Grid>
+                <Grid x:Name="main" Grid.Row="1"/>
+                <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}"
+                                             x:Name="SnackbarFour"/>
+            </Grid>
+        </materialDesign:DialogHost>
     </Grid>
 </Window>
