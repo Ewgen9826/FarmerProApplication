@@ -87,7 +87,7 @@
             </StackPanel>
         </Grid>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 0 0 20">
-            <Button Command="{Binding AddCommand}" 
+            <Button Command="{Binding NavigationToChoiseKormsPageCommand    }" 
                     Foreground="#fff" Content="Рассчитать рацион"/>
         </StackPanel>
     </Grid>

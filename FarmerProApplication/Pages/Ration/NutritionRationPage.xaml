@@ -7,7 +7,7 @@
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"  Background="#fff"
              d:DesignHeight="450" d:DesignWidth="800"
-              DataContext="{Binding Source={StaticResource Locator}, Path=CowDetailViewModel}">
+              DataContext="{Binding Source={StaticResource Locator}, Path=NutritionRationViewModel}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -22,25 +22,25 @@
                        HorizontalAlignment="Center"/>
         </StackPanel>
 
-        <DataGrid Grid.Row="1" x:Name="grid" ItemsSource="{Binding Storages}" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False"
+        <DataGrid Grid.Row="1" x:Name="grid" ItemsSource="{Binding NutritionRationDtos}" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False"
                       materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="30 10">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Width="250" Header="Питательное вещество" Binding="{Binding GroupName}"/>
-                <DataGridTextColumn Width="200" Header="В рационе" Binding="{Binding GroupName}"/>
-                <DataGridTextColumn Width="200" Header="В норме" Binding="{Binding GroupName}"/>
-                <DataGridTextColumn Width="200" Header="Отклонение" Binding="{Binding GroupName}"/>
+                <DataGridTextColumn Width="250" Header="Питательное вещество" Binding="{Binding Name}"/>
+                <DataGridTextColumn Width="200" Header="В рационе" Binding="{Binding CurrentValue}"/>
+                <DataGridTextColumn Width="200" Header="В норме" Binding="{Binding NormValue}"/>
+                <DataGridTextColumn Width="200" Header="Отклонение" Binding="{Binding Deviation}"/>
             </DataGrid.Columns>
 
         </DataGrid>
 
         <Grid Grid.Row="2" HorizontalAlignment="Stretch" Margin="40 20">
-            <Button Command="{Binding AddCommand}" Style="{StaticResource MaterialDesignFlatButton}"
+            <Button Command="{Binding NavigationToUserHomePageCommand}" Style="{StaticResource MaterialDesignFlatButton}"
                     Content="Рабочие модули" HorizontalAlignment="Left"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Command="{Binding AddCommand}"
+                <Button Command="{Binding NavigationToChoiceEquantityKormsPageCommand}"
                     Foreground="#fff" Content="Назад" Margin="0 0 20 0"/>
-                <Button Command="{Binding AddCommand}"
+                <Button Command="{Binding NavigationToCostRationPageCommand}"
                     Foreground="#fff" Content="Далее"/>
             </StackPanel>
         </Grid>

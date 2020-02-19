@@ -6,6 +6,7 @@ using FarmerProApplication.Model.Seeds;
 using FarmerProApplication.Pages;
 using FarmerProApplication.Pages.Admin;
 using FarmerProApplication.Pages.Balance;
+using FarmerProApplication.Pages.Ration;
 using FarmerProApplication.Pages.User;
 using FarmerProApplication.Services;
 using FarmerProApplication.Services.Contracts;
@@ -13,6 +14,7 @@ using FarmerProApplication.Services.Implementations;
 using FarmerProApplication.ViewModel;
 using FarmerProApplication.ViewModels;
 using FarmerProApplication.ViewModels.Balance;
+using FarmerProApplication.ViewModels.Ration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -84,6 +86,11 @@ namespace FarmerProApplication
                 navigationService.Configure(PageNameConstants.NormDetailPage, typeof(NormDetailPage));
                 navigationService.Configure(PageNameConstants.ChoiceGroupCowPage, typeof(ChoiceGroupCowPage));
                 navigationService.Configure(PageNameConstants.BalanceResultPage, typeof(BalanceResutlPage));
+                navigationService.Configure(PageNameConstants.ChoiceKormsPage, typeof(ChoiceKormsPage));
+                navigationService.Configure(PageNameConstants.ChoiceEquantityKormsPage, typeof(ChoicEquantityKormsPage));
+                navigationService.Configure(PageNameConstants.NutritionRationPage, typeof(NutritionRationPage));
+                navigationService.Configure(PageNameConstants.CostRationPage, typeof(CostRationPage));
+                navigationService.Configure(PageNameConstants.ReportOnRationPage, typeof(ReportOnRationPage));
 
                 return navigationService;
             });
@@ -111,6 +118,11 @@ namespace FarmerProApplication
             services.AddTransient<NormDetailViewModel>();
             services.AddSingleton<ChoiceGroupCowViewModel>();
             services.AddSingleton<BalanceResultViewModel>();
+            services.AddSingleton<ChoiceKormsViewModel>();
+            services.AddSingleton<ChoiceEquantityKormsViewModel>();
+            services.AddSingleton<NutritionRationViewModel>();
+            services.AddSingleton<CostRationViewModel>();
+            services.AddSingleton<ReportOnRationViewModel>();
             // Register all Pages of the applications.
             services.AddTransient<LoginPage>();
             services.AddTransient<AdminHomePage>();
@@ -125,6 +137,11 @@ namespace FarmerProApplication
             services.AddTransient<NormDetailPage>();
             services.AddTransient<ChoiceGroupCowPage>();
             services.AddTransient<BalanceResutlPage>();
+            services.AddTransient<ChoiceKormsPage>();
+            services.AddTransient<ChoicEquantityKormsPage>();
+            services.AddTransient<NutritionRationPage>();
+            services.AddTransient<CostRationPage>();
+            services.AddTransient<ReportOnRationPage>();
             // Register all Dialogs Window
             services.AddTransient<ConfirmDialog>();
 

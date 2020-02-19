@@ -7,7 +7,7 @@
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"  Background="#fff"
              d:DesignHeight="450" d:DesignWidth="800"
-              DataContext="{Binding Source={StaticResource Locator}, Path=CowDetailViewModel}">
+              DataContext="{Binding Source={StaticResource Locator}, Path=ChoiceKormsViewModel}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -22,27 +22,27 @@
                        HorizontalAlignment="Center"/>
         </StackPanel>
 
-        <DataGrid Grid.Row="1" x:Name="grid" ItemsSource="{Binding Storages}" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False"
+        <DataGrid Grid.Row="1" ItemsSource="{Binding ChoiceKormDtos}" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False"
                       materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="30 10">
 
             <DataGrid.Columns>
-                <DataGridCheckBoxColumn Binding="{Binding Value}" 
+                <DataGridCheckBoxColumn Binding="{Binding IsCheck}" 
                                             ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
                                             EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
                                                 Header="Выбор"/>
-                <DataGridTextColumn Width="400" Header="Название корма" Binding="{Binding GroupName}"/>
-                <DataGridTextColumn Width="300" Header="Стоимость" Binding="{Binding GroupName}"/>
+                <DataGridTextColumn Width="400" Header="Название корма" Binding="{Binding Name}"/>
+                <DataGridTextColumn Width="300" Header="Стоимость" Binding="{Binding Cost}"/>
             </DataGrid.Columns>
             
         </DataGrid>
 
         <Grid Grid.Row="2" HorizontalAlignment="Stretch" Margin="40 20">
-            <Button Command="{Binding AddCommand}" Style="{StaticResource MaterialDesignFlatButton}"
+            <Button Command="{Binding NavigationToUserHomePageCommand}" Style="{StaticResource MaterialDesignFlatButton}"
                     Content="Рабочие модули" HorizontalAlignment="Left"/>
             <Button Command="{Binding AddCommand}" 
                     Foreground="#fff" Content="Питательность корма" HorizontalAlignment="Center"
                     Style="{StaticResource MaterialDesignFlatLightBgButton}"/>
-            <Button Command="{Binding AddCommand}"
+            <Button Command="{Binding NaviagationToChoiceEquantityKormsCommand}"
                     Foreground="#fff" Content="Далее" HorizontalAlignment="Right"/>
         </Grid>
     </Grid>

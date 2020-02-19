@@ -1,6 +1,7 @@
 ﻿
 using FarmerProApplication.ViewModel;
 using FarmerProApplication.ViewModels.Balance;
+using FarmerProApplication.ViewModels.Ration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FarmerProApplication.ViewModels
@@ -20,5 +21,10 @@ namespace FarmerProApplication.ViewModels
         public ChoiceGroupCowViewModel ChoiceGroupCowViewModel => App.ServiceProvider.GetRequiredService<ChoiceGroupCowViewModel>();
         public BalanceResultViewModel BalanceResultViewModel => App.ServiceProvider.GetRequiredService<BalanceResultViewModel>();
         public UserHomeViewModel UserHomeViewModel => App.ServiceProvider.GetRequiredService<UserHomeViewModel>();
+        public ChoiceKormsViewModel ChoiceKormsViewModel => App.ServiceProvider.GetRequiredService<ChoiceKormsViewModel>();
+        public ChoiceEquantityKormsViewModel ChoiceEquantityKormsViewModel => App.ServiceProvider.GetRequiredService<ChoiceEquantityKormsViewModel>();
+        public NutritionRationViewModel NutritionRationViewModel => App.ServiceProvider.GetRequiredService<NutritionRationViewModel>();
+        public CostRationViewModel CostRationViewModel => App.ServiceProvider.GetRequiredService<CostRationViewModel>();
+        public ReportOnRationViewModel ReportOnRationViewModel => App.ServiceProvider.GetRequiredService<ReportOnRationViewModel>();
     }
 }

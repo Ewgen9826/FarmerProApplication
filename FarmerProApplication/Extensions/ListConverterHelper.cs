@@ -5,7 +5,7 @@ namespace FarmerProApplication.Extensions
 {
     public static class ListConverterHelper
     {
-        public static ObservableCollection<T> ToObservable<T>(this IList<T> list)
+        public static ObservableCollection<T> ToObservable<T>(this IEnumerable<T> list)
         {
             var observableCollection = new ObservableCollection<T>();
             foreach (var item in list)

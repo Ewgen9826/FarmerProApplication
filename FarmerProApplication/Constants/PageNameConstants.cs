@@ -16,5 +16,10 @@ namespace FarmerProApplication.Services
         public const string NormDetailPage = nameof(NormDetailPage);
         public const string ChoiceGroupCowPage = nameof(ChoiceGroupCowPage);
         public const string BalanceResultPage = nameof(BalanceResultPage);
+        public const string ChoiceKormsPage = nameof(ChoiceKormsPage);
+        public const string ChoiceEquantityKormsPage = nameof(ChoiceEquantityKormsPage);
+        public const string NutritionRationPage = nameof(NutritionRationPage);
+        public const string CostRationPage = nameof(CostRationPage);
+        public const string ReportOnRationPage = nameof(ReportOnRationPage);
     }
 }

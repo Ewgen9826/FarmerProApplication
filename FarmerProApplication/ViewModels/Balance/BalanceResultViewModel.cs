@@ -12,6 +12,7 @@ namespace FarmerProApplication.ViewModels.Balance
 
         public NormDto Norm { get; set; }
         public RelayCommand NavigationToBalanceResultPageCommand { get; set; }
+        public RelayCommand NavigationToChoiseKormsPageCommand { get; set; }
 
         public BalanceResultViewModel(NavigationService navigationService, StateService stateService)
         {
@@ -21,11 +22,17 @@ namespace FarmerProApplication.ViewModels.Balance
             Norm = _stateService.Norm;
 
             NavigationToBalanceResultPageCommand = new RelayCommand(() => NavigationToBalanceResultPage());
+            NavigationToChoiseKormsPageCommand = new RelayCommand(()=> NavigationToChoiseKormsPage());
         }
 
         private void NavigationToBalanceResultPage()
         {
             _navigationService.ShowPage(PageNameConstants.BalanceResultPage);
+        }
+
+        private void NavigationToChoiseKormsPage()
+        {
+            _navigationService.ShowPage(PageNameConstants.ChoiceKormsPage);
         }
     }
 }

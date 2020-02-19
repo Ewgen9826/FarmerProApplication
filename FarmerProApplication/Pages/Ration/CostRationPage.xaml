@@ -7,7 +7,7 @@
               xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d"  Background="#fff"
              d:DesignHeight="450" d:DesignWidth="800"
-              DataContext="{Binding Source={StaticResource Locator}, Path=CowDetailViewModel}">
+              DataContext="{Binding Source={StaticResource Locator}, Path=CostRationViewModel}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -29,7 +29,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Foreground="#616161" HorizontalAlignment="Right" Text="Кол-во единиц скота:" FontSize="20" FontWeight="Bold" Style="{StaticResource MaterialDesignTextBlock}"/>
-                <TextBox Text="{Binding GroupName}" 
+                <TextBox Text="{Binding CowsCount}" 
                          Grid.Column="1" Width="300" 
                          HorizontalAlignment="Left"  
                          materialDesign:HintAssist.Hint="Введите количество скота" FontSize="20" Margin="20 0"/>
@@ -41,9 +41,9 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock HorizontalAlignment="Right" Foreground="#616161" Text="Количество дней кормления:" FontSize="20" FontWeight="Bold" Style="{StaticResource MaterialDesignTextBlock}"/>
-                <TextBox Text="{Binding Weight}" Grid.Column="1" Width="300" HorizontalAlignment="Left"  materialDesign:HintAssist.Hint="Введите количество дней" FontSize="20" Margin="20 0"/>
+                <TextBox Text="{Binding Days}" Grid.Column="1" Width="300" HorizontalAlignment="Left"  materialDesign:HintAssist.Hint="Введите количество дней" FontSize="20" Margin="20 0"/>
             </Grid>
-            <Button Command="{Binding AddCommand}"
+            <Button Command="{Binding CalculateCostRationCommand}"
                     Margin="0 30 0 0"
                     HorizontalAlignment="Center"
                     Foreground="#fff" Content="Рассчитать"/>
@@ -58,7 +58,7 @@
                            FontWeight="Bold" Style="{StaticResource MaterialDesignTextBlock}"/>
                 <TextBlock HorizontalAlignment="Right" 
                            Foreground="#000" 
-                           Text="20" 
+                           Text="{Binding CostRation}" 
                            FontSize="24" 
                            Margin="20 0 0 0"
                            FontWeight="Bold" Style="{StaticResource MaterialDesignTextBlock}"/>
@@ -67,12 +67,12 @@
         </StackPanel>
         
         <Grid Grid.Row="2" HorizontalAlignment="Stretch" Margin="40 20">
-            <Button Command="{Binding AddCommand}" Style="{StaticResource MaterialDesignFlatButton}"
+            <Button Command="{Binding NavigationToUserHomePageCommand}" Style="{StaticResource MaterialDesignFlatButton}"
                     Content="Рабочие модули" HorizontalAlignment="Left"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Command="{Binding AddCommand}"
+                <Button Command="{Binding NavigationToNutritionRationPageCommand}"
                     Foreground="#fff" Content="Назад" Margin="0 0 20 0"/>
-                <Button Command="{Binding AddCommand}"
+                <Button Command="{Binding NavigationToReportOnRatinCommand}"
                     Foreground="#fff" Content="Далее"/>
             </StackPanel>
         </Grid>
