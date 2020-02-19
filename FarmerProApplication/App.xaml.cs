@@ -10,6 +10,7 @@ using FarmerProApplication.Pages.User;
 using FarmerProApplication.Services;
 using FarmerProApplication.Services.Contracts;
 using FarmerProApplication.Services.Implementations;
+using FarmerProApplication.ViewModel;
 using FarmerProApplication.ViewModels;
 using FarmerProApplication.ViewModels.Balance;
 using Microsoft.EntityFrameworkCore;
@@ -99,6 +100,7 @@ namespace FarmerProApplication
             // Register all ViewModels of the applications.
             services.AddSingleton<LoginViewModel>();
             services.AddSingleton<AdminHomeViewModel>();
+            services.AddTransient<UserHomeViewModel>();
             services.AddTransient<UsersViewModel>();
             services.AddTransient<UserDetailViewModel>();
             services.AddTransient<FeedBaseViewModel>();
@@ -143,7 +145,7 @@ namespace FarmerProApplication
             mainWindow.Show();
 
             var navigationService = ServiceProvider.GetRequiredService<NavigationService>();
-            navigationService.ShowPage(PageNameConstants.ChoiceGroupCowPage);
+            navigationService.ShowPage(PageNameConstants.LoginPage);
 
             base.OnStartup(e);
         }

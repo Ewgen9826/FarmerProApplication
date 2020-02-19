@@ -1,4 +1,5 @@
 ﻿
+using FarmerProApplication.ViewModel;
 using FarmerProApplication.ViewModels.Balance;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,5 +19,6 @@ namespace FarmerProApplication.ViewModels
         public NormDetailViewModel NormDetailViewModel => App.ServiceProvider.GetRequiredService<NormDetailViewModel>();
         public ChoiceGroupCowViewModel ChoiceGroupCowViewModel => App.ServiceProvider.GetRequiredService<ChoiceGroupCowViewModel>();
         public BalanceResultViewModel BalanceResultViewModel => App.ServiceProvider.GetRequiredService<BalanceResultViewModel>();
+        public UserHomeViewModel UserHomeViewModel => App.ServiceProvider.GetRequiredService<UserHomeViewModel>();
     }
 }

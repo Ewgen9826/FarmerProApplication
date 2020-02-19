@@ -33,16 +33,10 @@
                            Text="Живая масса тела, кг:" 
                            FontSize="20" 
                            FontWeight="Bold" Style="{StaticResource MaterialDesignTextBlock}"/>
-                <ComboBox SelectedItem="{Binding Weigth}" ItemsSource="{Binding Norms}" 
-                          DisplayMemberPath="Name"  
-                          Grid.Column="1" Width="300"
+                <ComboBox Grid.Column="1" Width="300" SelectedItem="{Binding Weigth}" ItemsSource="{Binding Weights}"
                           HorizontalAlignment="Left" 
                           materialDesign:HintAssist.Hint="Выберите массу тела" FontSize="20" Margin="20 0">
-                    <ComboBoxItem>200-299</ComboBoxItem>
-                    <ComboBoxItem>300-399</ComboBoxItem>
-                    <ComboBoxItem>400-499</ComboBoxItem>
-                    <ComboBoxItem>500-599</ComboBoxItem>
-                    <ComboBoxItem>600-699</ComboBoxItem>
+                  
                 </ComboBox>
             </Grid>
 
@@ -52,20 +46,14 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock HorizontalAlignment="Right" 
-                           Foreground="#616161" 
+                           Foreground="#616161"
                            Text="Продуктивность, л/сут:" 
                            FontSize="20" 
                            FontWeight="Bold" Style="{StaticResource MaterialDesignTextBlock}"/>
-                <ComboBox SelectedItem="{Binding Productivity}" ItemsSource="{Binding Norms}" 
-                          DisplayMemberPath="Name"  
+                <ComboBox SelectedItem="{Binding Productivity}" ItemsSource="{Binding Productivities}"
                           Grid.Column="1" Width="300"
                           HorizontalAlignment="Left" 
                           materialDesign:HintAssist.Hint="Выберите продуктивность" FontSize="20" Margin="20 0">
-                    <ComboBoxItem>10</ComboBoxItem>
-                    <ComboBoxItem>15</ComboBoxItem>
-                    <ComboBoxItem>20</ComboBoxItem>
-                    <ComboBoxItem>25</ComboBoxItem>
-                    <ComboBoxItem>30</ComboBoxItem>
                 </ComboBox>
             </Grid>
 
