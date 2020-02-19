@@ -5,11 +5,13 @@ using FarmerProApplication.Model;
 using FarmerProApplication.Model.Seeds;
 using FarmerProApplication.Pages;
 using FarmerProApplication.Pages.Admin;
+using FarmerProApplication.Pages.Balance;
 using FarmerProApplication.Pages.User;
 using FarmerProApplication.Services;
 using FarmerProApplication.Services.Contracts;
 using FarmerProApplication.Services.Implementations;
 using FarmerProApplication.ViewModels;
+using FarmerProApplication.ViewModels.Balance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -79,6 +81,8 @@ namespace FarmerProApplication
                 navigationService.Configure(PageNameConstants.CowDetailPage, typeof(CowDetailPage));
                 navigationService.Configure(PageNameConstants.NormsPage, typeof(NormsPage));
                 navigationService.Configure(PageNameConstants.NormDetailPage, typeof(NormDetailPage));
+                navigationService.Configure(PageNameConstants.ChoiceGroupCowPage, typeof(ChoiceGroupCowPage));
+                navigationService.Configure(PageNameConstants.BalanceResultPage, typeof(BalanceResutlPage));
 
                 return navigationService;
             });
@@ -103,6 +107,8 @@ namespace FarmerProApplication
             services.AddTransient<CowDetailViewModel>();
             services.AddTransient<NormsViewModel>();
             services.AddTransient<NormDetailViewModel>();
+            services.AddSingleton<ChoiceGroupCowViewModel>();
+            services.AddSingleton<BalanceResultViewModel>();
             // Register all Pages of the applications.
             services.AddTransient<LoginPage>();
             services.AddTransient<AdminHomePage>();
@@ -115,11 +121,15 @@ namespace FarmerProApplication
             services.AddTransient<CowDetailPage>();
             services.AddTransient<NormsPage>();
             services.AddTransient<NormDetailPage>();
+            services.AddTransient<ChoiceGroupCowPage>();
+            services.AddTransient<BalanceResutlPage>();
             // Register all Dialogs Window
             services.AddTransient<ConfirmDialog>();
 
             services.AddTransient<DialogsService>();
             services.AddTransient<SnackbarService>();
+
+            services.AddSingleton<StateService>();
         }
 
         protected override async void OnStartup(StartupEventArgs e)
@@ -133,7 +143,7 @@ namespace FarmerProApplication
             mainWindow.Show();
 
             var navigationService = ServiceProvider.GetRequiredService<NavigationService>();
-            navigationService.ShowPage(PageNameConstants.LoginPage);
+            navigationService.ShowPage(PageNameConstants.ChoiceGroupCowPage);
 
             base.OnStartup(e);
         }

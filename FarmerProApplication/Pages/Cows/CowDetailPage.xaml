@@ -27,7 +27,7 @@
                 <TextBox Text="{Binding GroupName}" Grid.Column="1" Width="300" HorizontalAlignment="Left"  materialDesign:HintAssist.Hint="Введите наименование группы" FontSize="20" Margin="20 0"/>
             </Grid>
 
-            <Grid HorizontalAlignment="Stretch" Margin="0 60 0 0">
+            <Grid HorizontalAlignment="Stretch" Margin="0 40 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="250"/>
                     <ColumnDefinition Width="*"/>
@@ -36,13 +36,22 @@
                 <TextBox Text="{Binding Weight}" Grid.Column="1" Width="300" HorizontalAlignment="Left"  materialDesign:HintAssist.Hint="Введите массу тела" FontSize="20" Margin="20 0"/>
             </Grid>
 
-            <Grid HorizontalAlignment="Stretch" Margin="0 60 0 0">
+            <Grid HorizontalAlignment="Stretch" Margin="0 40 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="250"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock HorizontalAlignment="Right" Foreground="#616161" Text="Продуктивность, л/сут.:" FontSize="20" FontWeight="Bold" Style="{StaticResource MaterialDesignTextBlock}"/>
                 <TextBox Text="{Binding Productivity}" Grid.Column="1" Width="300" HorizontalAlignment="Left"  materialDesign:HintAssist.Hint="Введите продуктивность" FontSize="20" Margin="20 0"/>
+            </Grid>
+
+            <Grid HorizontalAlignment="Stretch" Margin="0 40 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Right" Foreground="#616161" Text="Норма:" FontSize="20" FontWeight="Bold" Style="{StaticResource MaterialDesignTextBlock}"/>
+                <ComboBox SelectedItem="{Binding Norm}" ItemsSource="{Binding Norms}" DisplayMemberPath="Name"  Grid.Column="1" Width="300" HorizontalAlignment="Left"  materialDesign:HintAssist.Hint="Выберите норму" FontSize="20" Margin="20 0"/>
             </Grid>
 
         </StackPanel>

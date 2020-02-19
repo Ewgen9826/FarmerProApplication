@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="FarmerProApplication.Pages.Ration.ChoiceKormsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FarmerProApplication.Pages.Ration"
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"  Background="#fff"
+             d:DesignHeight="450" d:DesignWidth="800"
+              DataContext="{Binding Source={StaticResource Locator}, Path=CowDetailViewModel}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="10">
+            <TextBlock Style="{StaticResource MaterialDesignTextBlock}" 
+                       Foreground="{StaticResource PrimaryHueDarkBrush}" 
+                       FontWeight="Bold" FontSize="26" 
+                       Text="Выбор кормов" 
+                       HorizontalAlignment="Center"/>
+        </StackPanel>
+
+        <DataGrid Grid.Row="1" x:Name="grid" ItemsSource="{Binding Storages}" CanUserSortColumns="True" CanUserAddRows="False" AutoGenerateColumns="False"
+                      materialDesign:DataGridAssist.CellPadding="13 8 8 8" materialDesign:DataGridAssist.ColumnHeaderPadding="30 10">
+
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Binding="{Binding Value}" 
+                                            ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
+                                            EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
+                                                Header="Выбор"/>
+                <DataGridTextColumn Width="400" Header="Название корма" Binding="{Binding GroupName}"/>
+                <DataGridTextColumn Width="300" Header="Стоимость" Binding="{Binding GroupName}"/>
+            </DataGrid.Columns>
+            
+        </DataGrid>
+
+        <Grid Grid.Row="2" HorizontalAlignment="Stretch" Margin="40 20">
+            <Button Command="{Binding AddCommand}" Style="{StaticResource MaterialDesignFlatButton}"
+                    Content="Рабочие модули" HorizontalAlignment="Left"/>
+            <Button Command="{Binding AddCommand}" 
+                    Foreground="#fff" Content="Питательность корма" HorizontalAlignment="Center"
+                    Style="{StaticResource MaterialDesignFlatLightBgButton}"/>
+            <Button Command="{Binding AddCommand}"
+                    Foreground="#fff" Content="Далее" HorizontalAlignment="Right"/>
+        </Grid>
+    </Grid>
+</UserControl>

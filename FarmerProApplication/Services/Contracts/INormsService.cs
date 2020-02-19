@@ -10,5 +10,6 @@ namespace FarmerProApplication.Services.Contracts
         void Add(CreateNormDto createNorm);
         void Update(int normId, CreateNormDto updateNorm);
         void Remove(int normId);
+        NormDto GetByInterval(double minWeigth, double maxWeigth, double minProductivity, double maxProductivity);
     }
 }
