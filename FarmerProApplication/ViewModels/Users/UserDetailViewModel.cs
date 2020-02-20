@@ -4,6 +4,8 @@ using FarmerProApplication.Services;
 using FarmerProApplication.Services.Contracts;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace FarmerProApplication.ViewModels
 {
@@ -11,6 +13,8 @@ namespace FarmerProApplication.ViewModels
     {
         private readonly NavigationService _navigationService;
         private readonly IUsersService _usersService;
+        private readonly DialogsService _dialogsService;
+        private readonly SnackbarService _snackbarService;
 
         public RelayCommand CancelCommand { get; }
         public RelayCommand AddCommand { get; set; }
@@ -22,10 +26,12 @@ namespace FarmerProApplication.ViewModels
         public bool IsAdmin { get; set; }
         public bool IsUser { get; set; }
 
-        public UserDetailViewModel(NavigationService navigationService, IUsersService usersService)
+        public UserDetailViewModel(NavigationService navigationService, IUsersService usersService, DialogsService dialogsService, SnackbarService snackbarService)
         {
             _navigationService = navigationService;
             _usersService = usersService;
+            _dialogsService = dialogsService;
+            _snackbarService = snackbarService;
 
             CancelCommand = new RelayCommand(() => Cancel());
             AddCommand = new RelayCommand(() => Add());
@@ -44,8 +50,19 @@ namespace FarmerProApplication.ViewModels
             createUser.Login = Login;
             createUser.Password = Password;
             createUser.Role = IsAdmin ? RoleEnum.ADMIN : RoleEnum.USER;
+
+            var results = new List<ValidationResult>();
+            var context = new ValidationContext(createUser);
+            if (!Validator.TryValidateObject(createUser, context, results, true))
+            {
+                _dialogsService.ShowError("Заполните все поля формы.");
+                return;
+            }
+
             _usersService.Add(createUser);
             _navigationService.ShowPage(PageNameConstants.UsersPage);
+
+            _snackbarService.Show("Пользователь успешно добавлен.");
         }
     }
 }

@@ -35,7 +35,7 @@ namespace FarmerProApplication.ViewModels
             _usersService = usersService;
 
             NavigateToAddPageCommand = new RelayCommand(() => NavigateToAddPage());
-            RemoveCommand = new RelayCommand(() => Remove(), () => SelectedUser != null);
+            RemoveCommand = new RelayCommand(() => Remove());
             BackCommand = new RelayCommand(() => NavigateToHome());
 
             Users = _usersService.GetAll().ToObservable();
@@ -56,11 +56,6 @@ namespace FarmerProApplication.ViewModels
             _usersService.Remove(SelectedUser.Id);
             Users.Remove(SelectedUser);
             SelectedUser = null;
-        }
-
-        private bool IsSelected()
-        {
-            return SelectedUser != null;
         }
     }
 }

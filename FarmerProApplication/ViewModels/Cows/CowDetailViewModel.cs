@@ -5,7 +5,9 @@ using FarmerProApplication.Services;
 using FarmerProApplication.Services.Contracts;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace FarmerProApplication.ViewModels
 {
@@ -14,6 +16,8 @@ namespace FarmerProApplication.ViewModels
         private readonly NavigationService _navigationService;
         private readonly ICowsService _cowsService;
         private readonly INormsService _normsService;
+        private readonly DialogsService _dialogsService;
+        private readonly SnackbarService _snackbarService;
 
         public RelayCommand CancelCommand { get; }
         public RelayCommand AddCommand { get; }
@@ -33,11 +37,13 @@ namespace FarmerProApplication.ViewModels
         public NormDto Norm { get=>_norm; set=>Set(ref _norm,value); }
 
 
-        public CowDetailViewModel(NavigationService navigationService, ICowsService cowsService, INormsService normsService)
+        public CowDetailViewModel(NavigationService navigationService, ICowsService cowsService, INormsService normsService, DialogsService dialogsService, SnackbarService snackbarService)
         {
             _navigationService = navigationService;
             _cowsService = cowsService;
             _normsService = normsService;
+            _dialogsService = dialogsService;
+            _snackbarService = snackbarService;
 
             CancelCommand = new RelayCommand(() => Cancel());
             AddCommand = new RelayCommand(() => Add());
@@ -59,8 +65,19 @@ namespace FarmerProApplication.ViewModels
                 Productivity = _productivity,
                 NormId = _norm.Id
             };
+
+            var results = new List<ValidationResult>();
+            var context = new ValidationContext(createCow);
+            if (!Validator.TryValidateObject(createCow, context, results, true))
+            {
+                _dialogsService.ShowError("Заполните все поля формы.");
+                return;
+            }
+
             _cowsService.Add(createCow);
             _navigationService.ShowPage(PageNameConstants.CowsPage);
+
+            _snackbarService.Show("Группа коров успешно добавлена.");
         }
     }
 }

@@ -3,6 +3,8 @@ using FarmerProApplication.Services;
 using FarmerProApplication.Services.Contracts;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace FarmerProApplication.ViewModels
 {
@@ -10,6 +12,8 @@ namespace FarmerProApplication.ViewModels
     {
         private readonly NavigationService _navigationService;
         private readonly INormsService _normsService;
+        private readonly DialogsService _dialogsService;
+        private readonly SnackbarService _snackbarService;
 
         public RelayCommand CancelCommand { get; }
         public RelayCommand AddCommand { get; }
@@ -26,10 +30,12 @@ namespace FarmerProApplication.ViewModels
         private double _protein;
         public double Protein { get => _protein; set => Set(ref _protein, value); }
 
-        public NormDetailViewModel(NavigationService navigationService, INormsService normsService)
+        public NormDetailViewModel(NavigationService navigationService, INormsService normsService, DialogsService dialogsService, SnackbarService snackbarService)
         {
             _navigationService = navigationService;
             _normsService = normsService;
+            _dialogsService = dialogsService;
+            _snackbarService = snackbarService;
 
             CancelCommand = new RelayCommand(() => Cancel());
             AddCommand = new RelayCommand(() => Add());
@@ -49,8 +55,18 @@ namespace FarmerProApplication.ViewModels
                 Energy = _energy,
                 Protein = _protein
             };
+            var results = new List<ValidationResult>();
+            var context = new ValidationContext(createNorm);
+            if (!Validator.TryValidateObject(createNorm, context, results, true))
+            {
+                _dialogsService.ShowError("Заполните все поля формы.");
+                return;
+            }
+
             _normsService.Add(createNorm);
             _navigationService.ShowPage(PageNameConstants.NormsPage);
+
+            _snackbarService.Show("Норма успешно добавлена.");
         }
     }
 }
